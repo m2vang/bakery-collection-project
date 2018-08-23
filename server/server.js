@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 //require routes
 const addRouter = require('./public/router/add.route');
+const manageRouter = require('./public/router/manage.route');
 
 //config bodyParser
 app.use(bodyParser.json());
@@ -16,6 +17,7 @@ app.use(express.static('server/public'));
 
 //router usage
 app.use('/', addRouter);
+app.use('/manage', manageRouter);
 
 //start up sever
 app.listen(PORT, () => {
