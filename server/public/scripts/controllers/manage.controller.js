@@ -23,6 +23,20 @@ myApp.controller('ManageController', function ($http) {
         mc.type = '';
     }; //end of addType
 
+    mc.removeType = function(typeId) {
+        console.log('in removeType', typeId);
+        $http({
+            method: 'DELETE',
+            url: '/manage/types/' + typeId
+        }).then(function (response) {
+            alert('Bakery type deleted!');
+            getTypes();
+        }).catch(function (error) {
+            alert('Unable to delete type!');
+            console.log('error in removeType', error);
+        }); //end of DELETE
+    }; //end of removeType
+
     function getTypes() {
         console.log('in getTypes');
         $http({

@@ -19,7 +19,7 @@
             <tr ng-repeat="types in mc.types">
                 <td>{{types.types}}</td>
                 <td>{{types.count}}</td>
-                <td><button>Delete</button></td>
+                <td><a class="btn btn-danger" ng-click="mc.removeType(types.id)">Delete</a></td>
             </tr>
         </tbody>
     </table>
