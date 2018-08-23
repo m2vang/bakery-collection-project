@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+//Posting new bakery item
 router.post('/addItem', (req, res) => {
     console.log('in POST-add route', req.body);
     const updatedItem = req.body;
@@ -18,9 +19,10 @@ router.post('/addItem', (req, res) => {
     });
 }); //end of POST
 
+//Getting all bakery items
 router.get('/add', (req, res) => {
     console.log('in GET-add route');
-    const query = `SELECT "name", "baked_types"."types", "baked_date", "eat_by", "image_url" 
+    const query = `SELECT "baked_goods"."id", "name", "baked_types"."types", "baked_date", "eat_by", "image_url" 
                     FROM "baked_goods" 
                     JOIN "baked_types" 
                     ON "baked_types"."id" = "baked_goods"."baked_types_id";`;
@@ -32,6 +34,19 @@ router.get('/add', (req, res) => {
         console.log('error in GET-items', error);
         res.sendStatus(500);
     });
-}); //end of GET-items
+}); //end of GET
+
+router.delete('/delete/:id', (req, res) => {
+    console.log('in delete-add route', req.params.id);
+    const idToDelete = req.params.id;
+    const query = `DELETE FROM "baked_goods" WHERE "id" = $1;`;
+    pool.query(query, [idToDelete])
+    .then((results) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error in delete-add', error);
+        res.sendStatus(500);
+    });
+}); //end of DELETE
 
 module.exports = router;

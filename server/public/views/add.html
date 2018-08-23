@@ -30,15 +30,14 @@
 </div>
 
 <div class="treats">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" ng-src="" alt="Card image cap">
+    <div class="card" style="width: 18rem;" ng-repeat="items in ac.goods">
+        <img class="card-img-top" ng-src="{{items.image_url}}" alt="Card image cap" height="200px" width="200px">
         <div class="card-body">
-            <h5 class="card-name"></h5>
-            <p class="card-type"></p>
-            <p class="card-type"></p>
-            <p class="card-bDate"></p>
-            <p class="card-eDate"></p>
-            <a class="btn btn-danger">Delete</a>
+            <h5 class="card-name">{{items.name}}</h5>
+            <p class="card-type">Type: {{items.baked_types_id}}</p>
+            <p class="card-bDate">Baked on: {{items.baked_date}}</p>
+            <p class="card-eDate">Eat by: {{items.eat_by}}</p>
+            <a class="btn btn-danger" ng-click="ac.removeItem(items.id)">Delete</a>
         </div>
     </div>
 </div>
