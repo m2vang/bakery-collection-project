@@ -18,4 +18,22 @@ router.post('/addType', (req, res) => {
     });
 }); //end of POST
 
+//Getting all types of bakery items
+router.get('/', (req, res) => {
+    console.log('in GET-type route');
+    const query = `SELECT "baked_types"."types", count("baked_goods"."baked_types_id") 
+                    FROM "baked_types" 
+                    JOIN "baked_goods" 
+                    ON "baked_goods"."baked_types_id" = "baked_types"."id" 
+                    GROUP BY "baked_types"."types";`;
+    pool.query(query)
+    .then((results) => {
+        console.log(results);
+        res.send(results.rows);
+    }).catch((error) => {
+        console.log('error in GET-types', error);
+        res.sendStatus(500);
+    });
+}); //end of GET
+
 module.exports = router;
