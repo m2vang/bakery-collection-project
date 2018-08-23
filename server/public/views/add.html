@@ -1,0 +1,45 @@
+<div class="inputs">
+    <form>
+        Name
+        <br>
+        <input type="text">
+        <br> Type of baked good:
+        <br>
+        <select>
+            <option>Cake</option>
+            <option>Cupcake</option>
+            <option>Cookies</option>
+            <option>Bread</option>
+            <option>Pie</option>
+            <option>Brownies</option>
+            <option>Donuts</option>
+            <option>Tart</option>
+            <option>Croissant</option>
+        </select>
+        <br>
+        <label for="dateOfBaked">Baked on:</label>
+        <input type="date" name="dateOfBaked" id="dateOfBaked">
+        <br>
+        <label for="dateOfFreshness">Eat by:</label>
+        <input type="date" name="dateOfFreshness" id="dateOfFreshness">
+        <br> Upload image:
+        <br>
+        <input type="text" placeholder="Image URL">
+        <br>
+        <input type="submit" value="Add new baked good">
+    </form>
+</div>
+
+<div class="treats">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" ng-src="" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-name"></h5>
+            <p class="card-type"></p>
+            <p class="card-type"></p>
+            <p class="card-bDate"></p>
+            <p class="card-eDate"></p>
+            <a class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>
