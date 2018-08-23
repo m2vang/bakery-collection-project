@@ -18,4 +18,20 @@ router.post('/addItem', (req, res) => {
     });
 }); //end of POST
 
+router.get('/add', (req, res) => {
+    console.log('in GET-add route');
+    const query = `SELECT "name", "baked_types"."types", "baked_date", "eat_by", "image_url" 
+                    FROM "baked_goods" 
+                    JOIN "baked_types" 
+                    ON "baked_types"."id" = "baked_goods"."baked_types_id";`;
+    pool.query(query)
+    .then((results) => {
+        console.log(results);
+        res.send(results.rows);
+    }).catch((error) => {
+        console.log('error in GET-items', error);
+        res.sendStatus(500);
+    });
+}); //end of GET-items
+
 module.exports = router;
