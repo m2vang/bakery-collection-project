@@ -1,11 +1,10 @@
 <div class="inputs">
-    <form>
-        Name
+    <form ng-submit="ac.addItem()">
+        <label for="name">Name:</label>
+        <input name="name" type="text" ng-model="ac.name">
         <br>
-        <input type="text">
-        <br> Type of baked good:
-        <br>
-        <select>
+        <label for="typeOfGoods">Type of baked good:</label>
+        <select name="typeOfGoods" ng-model="ac.type">
             <option>Cake</option>
             <option>Cupcake</option>
             <option>Cookies</option>
@@ -17,14 +16,14 @@
             <option>Croissant</option>
         </select>
         <br>
-        <label for="dateOfBaked">Baked on:</label>
-        <input type="date" name="dateOfBaked" id="dateOfBaked">
+        <label for="baked_date">Baked on:</label>
+        <input type="date" name="baked_date" id="baked_date" ng-model="ac.baked_date">
         <br>
-        <label for="dateOfFreshness">Eat by:</label>
-        <input type="date" name="dateOfFreshness" id="dateOfFreshness">
-        <br> Upload image:
+        <label for="eat_by">Eat by:</label>
+        <input type="date" name="eat_by" id="eat_by" ng-model="ac.eat_by">
         <br>
-        <input type="text" placeholder="Image URL">
+        <label for="image_url">Upload image:</label>
+        <input name="image_url" type="text" placeholder="Image URL" ng-model="ac.image_url">
         <br>
         <input type="submit" value="Add new baked good">
     </form>
