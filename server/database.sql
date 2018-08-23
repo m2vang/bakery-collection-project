@@ -11,7 +11,7 @@ CREATE TABLE "baked_goods" (
 	baked_types_id INT REFERENCES "baked_types");
 	
 INSERT INTO "baked_types" ("types")
-VALUES ('Cake'), ('Cupcake'), ('Cookies'), ('Bread'), ('Pie'), ('Brownies'), ('Donuts'), ('Tarte'), ('Croissant');
+VALUES ('Cake'), ('Cupcake'), ('Cookies'), ('Bread'), ('Pie'), ('Brownies'), ('Donuts'), ('Tart'), ('Croissant');
 
 INSERT INTO "baked_goods" ("name", "baked_date", "eat_by", "image_url", "baked_types_id")
 VALUES ('Banana Bread', '2018-08-22', '2018-08-25', 'https://c1.staticflickr.com/6/5138/5529538337_86e82ce346_b.jpg', 4);
