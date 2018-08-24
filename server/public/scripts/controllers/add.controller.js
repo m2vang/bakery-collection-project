@@ -1,6 +1,6 @@
 myApp.controller('AddController', function ($http) {
     console.log('AddController hit');
-
+    //let now = moment();
     const ac = this;
     ac.goods = [];
     //run getItems() when page loads
