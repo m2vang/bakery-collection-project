@@ -4,17 +4,7 @@
         <input name="name" type="text" ng-model="ac.name">
         <br>
         <label for="baked_types_id">Type of baked good:</label>
-        <select name="baked_types_id" ng-model="ac.baked_types_id">
-            <option value="1">Cake</option>
-            <option value="2">Cupcake</option>
-            <option value="3">Cookies</option>
-            <option value="4">Bread</option>
-            <option value="5">Pie</option>
-            <option value="6">Brownies</option>
-            <option value="7">Donuts</option>
-            <option value="8">Tart</option>
-            <option value="9">Croissant</option>
-        </select>
+        <select ng-options="types.types for types in ac.types" name="baked_types_id" ng-model="ac.baked_types_id"></select>
         <br>
         <label for="baked_date">Baked on:</label>
         <input type="date" name="baked_date" id="baked_date" ng-model="ac.baked_date">

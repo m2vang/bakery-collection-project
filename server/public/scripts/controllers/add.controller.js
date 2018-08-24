@@ -3,8 +3,10 @@ myApp.controller('AddController', function ($http) {
     //let now = moment();
     const ac = this;
     ac.goods = [];
-    //run getItems() when page loads
+    ac.types = [];
+    //run getItems() & getTypes when page loads
     getItems();
+    getTypes();
 
     //addItem() will add a new item to the bakery list
     ac.addItem = function() {
@@ -34,9 +36,9 @@ myApp.controller('AddController', function ($http) {
         ac.image_url = '';
     }; //end of addItem
 
+    //remove item by its id
     ac.removeItem = function(items) {
         console.log(items);
-        
         $http({
             method: 'DELETE',
             url: '/delete/' + items
@@ -63,5 +65,20 @@ myApp.controller('AddController', function ($http) {
             console.log('error in getItems', error);
         }); //end of GET
     }; //end of getItems
+
+    //getTypes() will get all of the types of bakery items
+    function getTypes() {
+        console.log('in getTypes');
+        $http({
+            method: 'GET',
+            url: '/manage'
+        }).then(function (response) {
+            ac.types = response.data;
+            console.log(response.data);
+        }).catch(function (error) {
+            alert('Unable to get bakery types!');
+            console.log('error in getTypes', error);
+        }); //end of GET
+    }; //end of getTypes
 
 }); //end of controller
