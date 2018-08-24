@@ -71,7 +71,7 @@ myApp.controller('AddController', function ($http) {
         console.log('in getTypes');
         $http({
             method: 'GET',
-            url: '/manage'
+            url: '/type'
         }).then(function (response) {
             ac.types = response.data;
             console.log(response.data);

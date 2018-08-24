@@ -18,7 +18,7 @@ router.post('/addType', (req, res) => {
     });
 }); //end of POST
 
-//Getting all types of bakery items
+//Getting all types of bakery items by their count
 router.get('/', (req, res) => {
     console.log('in GET-type route');
     const query = `SELECT "baked_types"."id", "baked_types"."types", count("baked_goods"."baked_types_id") 
