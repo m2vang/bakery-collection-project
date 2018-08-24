@@ -39,7 +39,7 @@ router.get('/add', (req, res) => {
 //Getting all types of bakery items by their name alphabetically 
 router.get('/type', (req, res) => {
     console.log('in GET-type-add route');
-    const query = `SELECT "baked_types"."id", "baked_types"."types", count("baked_goods"."baked_types_id") 
+    const query = `SELECT "baked_types"."id", "baked_types"."types"
                     FROM "baked_types" 
                     LEFT JOIN "baked_goods" 
                     ON "baked_goods"."baked_types_id" = "baked_types"."id" 

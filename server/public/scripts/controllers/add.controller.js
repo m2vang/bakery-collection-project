@@ -15,7 +15,7 @@ myApp.controller('AddController', function ($http) {
             url: '/addItem',
             data: {
                 name: ac.name,
-                baked_types_id: ac.baked_types_id,
+                baked_types_id: ac.baked_types_id.id,
                 baked_date: ac.baked_date,
                 eat_by: ac.eat_by,
                 image_url: ac.image_url
