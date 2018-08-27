@@ -77,7 +77,7 @@ tbody {
 }
 
 .card {
-    height: 500px;
+    height: 50px;
     padding: 10px;
     margin: 20px;
     float: left;
@@ -90,4 +90,9 @@ tbody {
   margin: 20px;
   float: left;
   color: black;
+}
+
+.card-body {
+  background-color: white;
+  padding: 20px;
 }

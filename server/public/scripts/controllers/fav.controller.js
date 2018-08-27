@@ -21,15 +21,20 @@ myApp.controller('FavController', function ($http) {
 
     fc.removeFav = function (favId) {
         console.log('in removeFav', favId);
-        $http({
-            method: 'DELETE',
-            url: '/fav/deleteFavs/' + favId
-        }).then(function (response) {
-            alert('Bakery fav deleted!');
-            getFavs();
-        }).catch(function (error) {
-            alert('Unable to delete fav!');
-            console.log('error in removeFav', error);
-        }); //end of DELETE
+        let cT = confirm('Confirming deletion?');
+        if (cT == true) {
+            $http({
+                method: 'DELETE',
+                url: '/fav/deleteFavs/' + favId
+            }).then(function (response) {
+                alert('Bakery fav deleted!');
+                getFavs();
+            }).catch(function (error) {
+                alert('Unable to delete fav!');
+                console.log('error in removeFav', error);
+            });
+        } else {
+            alert('Deletion Cancelled!');
+        }; //end of if-else
     }; //end of removeType
 }); //end of controller

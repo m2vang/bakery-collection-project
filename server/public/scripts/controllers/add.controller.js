@@ -9,7 +9,7 @@ myApp.controller('AddController', function ($http) {
     getTypes();
 
     //addItem() will add a new item to the bakery list
-    ac.addItem = function() {
+    ac.addItem = function () {
         $http({
             method: 'POST',
             url: '/addItem',
@@ -36,13 +36,13 @@ myApp.controller('AddController', function ($http) {
         ac.image_url = '';
     }; //end of addItem
 
-    ac.addFavorite = function(items) {
+    ac.addFavorite = function (items) {
         console.log('in addFav', items);
         let fav = items;
         $http({
             method: 'POST',
             url: '/addFav',
-            data: {favorite: fav}
+            data: { favorite: fav }
         }).then(function (response) {
             alert('Bakery item set as favorite!');
             getItems();
@@ -53,20 +53,25 @@ myApp.controller('AddController', function ($http) {
     }; //end of addFavorite
 
     //remove item by its id
-    ac.removeItem = function(items) {
+    ac.removeItem = function (items) {
         console.log(items);
-        $http({
-            method: 'DELETE',
-            url: '/delete/' + items
-        }).then(function (response) {
-            alert('Bakery item deleted!');
-            getItems();
-        }).catch(function (error) {
-            alert('Unable to delete item!');
-            console.log('error in removeItem', error);
-        }); //end of DELETE
+        let cT = confirm('Confirming deletion?');
+        if (cT == true) {
+            $http({
+                method: 'DELETE',
+                url: '/delete/' + items
+            }).then(function (response) {
+                alert('Bakery item deleted!');
+                getItems();
+            }).catch(function (error) {
+                alert('Unable to delete item!');
+                console.log('error in removeItem', error);
+            });
+        } else {
+            alert('Deletion Cancelled!');
+        }; //end of if-else
     }; //end of removeItem
-    
+
     //getItems() will get all of the bakery items
     function getItems() {
         console.log('in getItems');
