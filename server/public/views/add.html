@@ -1,7 +1,7 @@
 <div class="inputs">
-    <form ng-submit="ac.addItem()">
+    <form class="form" ng-submit="ac.addItem()">
         <label for="name">Name:</label>
-        <input name="name" type="text" ng-model="ac.name">
+        <input name="name" type="text" placeholder="e.g. Chocolate Donuts" ng-model="ac.name">
         <br>
         <label for="baked_types_id">Type of baked good:</label>
         <select ng-options="types.types for types in ac.types" name="baked_types_id" ng-model="ac.baked_types_id"></select>
@@ -15,7 +15,7 @@
         <label for="image_url">Upload image:</label>
         <input name="image_url" type="text" placeholder="Image URL" ng-model="ac.image_url">
         <br>
-        <input type="submit" value="Add new baked good">
+        <input class="btn btn-primary" type="submit" value="Add new baked good">
     </form>
 </div>
 
@@ -23,10 +23,12 @@
     <div class="card" style="width: 18rem;" ng-repeat="items in ac.goods">
         <img class="card-img-top" ng-src="{{items.image_url}}" alt="Card image cap" height="200px" width="200px">
         <div class="card-body">
-            <h5 class="card-name">{{items.name}}</h5>
-            <p class="card-type">Type: {{items.types}}</p>
-            <p class="card-bDate">Baked on: {{items.baked_date | date: "MMMM-d-y"}}</p>
-            <p class="card-eDate">Eat by: {{items.eat_by | date: "MMMM-d-y"}}</p>
+            <h5 class="card-name"><b><u>{{items.name}}</u></b></h5>
+            <p class="card-type"><b>Type:</b><br>{{items.types}}</p>
+            <p class="card-bDate"><b>Baked on:</b><br>{{items.baked_date | date: "MMMM-d-y"}}</p>
+            <p class="card-eDate"><b>Eat by:</b><br>{{items.eat_by | date: "MMMM-d-y"}}</p>
+            <img class="heart" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/A_perfect_SVG_heart.svg/2000px-A_perfect_SVG_heart.svg.png" width="30px"
+                ng-click="ac.addFavorite(items.id)">
             <a class="btn btn-danger" ng-click="ac.removeItem(items.id)">Delete</a>
         </div>
     </div>

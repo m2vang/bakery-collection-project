@@ -1,6 +1,6 @@
 myApp.controller('AddController', function ($http) {
     console.log('AddController hit');
-    //let now = moment();
+
     const ac = this;
     ac.goods = [];
     ac.types = [];
@@ -35,6 +35,22 @@ myApp.controller('AddController', function ($http) {
         ac.eat_by = '';
         ac.image_url = '';
     }; //end of addItem
+
+    ac.addFavorite = function(items) {
+        console.log('in addFav', items);
+        let fav = items;
+        $http({
+            method: 'POST',
+            url: '/addFav',
+            data: {favorite: fav}
+        }).then(function (response) {
+            alert('Bakery item set as favorite!');
+            getItems();
+        }).catch(function (error) {
+            alert('Unable to set bakery item as favorite!');
+            console.log('error in addFavorite', error);
+        }); //end of POST
+    }; //end of addFavorite
 
     //remove item by its id
     ac.removeItem = function(items) {

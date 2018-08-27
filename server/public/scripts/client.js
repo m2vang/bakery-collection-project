@@ -12,6 +12,10 @@ myApp.config(function ($routeProvider) {
             templateUrl: '/views/manage.html',
             controller: 'ManageController as mc'
         })
+        .when('/fav', {
+            templateUrl: '/views/fav.html',
+            controller: 'FavController as fc'
+        })
         .otherwise({
             templateUrl: '/views/404.html'
         });

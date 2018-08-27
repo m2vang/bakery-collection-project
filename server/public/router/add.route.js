@@ -17,7 +17,22 @@ router.post('/addItem', (req, res) => {
         console.log('error in POST item', error);
         res.sendStatus(500);
     });
-}); //end of POST
+}); //end of POST-addItem
+
+//Posting new bakery fav
+router.post('/addFav', (req, res) => {
+    console.log('in POST-fav', req.body);
+    const newFav = req.body;
+    const query = `INSERT INTO "baked_favs" ("baked_goods_id") VALUES ($1);`;
+    pool.query(query, [newFav.favorite])
+        .then((results) => {
+            console.log(results);
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('error in POST-fav', error);
+            res.sendStatus(500);
+        });
+}); //end of POST-addFav
 
 //Getting all bakery items
 router.get('/add', (req, res) => {
@@ -25,7 +40,8 @@ router.get('/add', (req, res) => {
     const query = `SELECT "baked_goods"."id", "name", "baked_types"."types", "baked_date", "eat_by", "image_url" 
                     FROM "baked_goods" 
                     JOIN "baked_types" 
-                    ON "baked_types"."id" = "baked_goods"."baked_types_id";`;
+                    ON "baked_types"."id" = "baked_goods"."baked_types_id"
+                    ORDER BY "baked_types"."types";`;
     pool.query(query)
     .then((results) => {
         console.log(results);

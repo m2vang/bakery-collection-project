@@ -1,0 +1,12 @@
+<h2>Mai Favorites</h2>
+
+<div class="treats">
+    <div class="cardFav" style="width: 18rem;" ng-repeat="fav in fc.favGoods">
+        <img class="card-img-top" ng-src="{{fav.image_url}}" alt="Card image cap" height="200px" width="200px">
+        <div class="card-body">
+            <h5 class="card-name"><b><u>{{fav.name}}</u></b></h5>
+            <p class="card-type"><b>Type:</b><br>{{fav.types}}</p>
+            <a class="btn btn-danger" ng-click="ac.removeItem(items.id)">Delete</a>
+        </div>
+    </div>
+</div>
