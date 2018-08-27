@@ -18,4 +18,18 @@ myApp.controller('FavController', function ($http) {
             console.log('error in getItems-fav', error);
         }); //end of GET
     }; //end of getItems
+
+    fc.removeFav = function (favId) {
+        console.log('in removeFav', favId);
+        $http({
+            method: 'DELETE',
+            url: '/fav/deleteFavs/' + favId
+        }).then(function (response) {
+            alert('Bakery fav deleted!');
+            getFavs();
+        }).catch(function (error) {
+            alert('Unable to delete fav!');
+            console.log('error in removeFav', error);
+        }); //end of DELETE
+    }; //end of removeType
 }); //end of controller

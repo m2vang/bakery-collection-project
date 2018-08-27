@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     console.log('in GET-addFav route');
-    const query = `SELECT "baked_favs"."baked_goods_id", "baked_goods"."name", "baked_types"."types", "baked_goods"."image_url" 
+    const query = `SELECT "baked_favs"."id",  "baked_favs"."baked_goods_id", "baked_goods"."name", "baked_types"."types", "baked_goods"."image_url" 
                     FROM "baked_goods" 
                     JOIN "baked_favs" 
                     ON "baked_favs"."baked_goods_id" = "baked_goods"."id" 
@@ -19,5 +19,19 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         });
 }); //end of GET
+
+//Deleting bakery item by its id
+router.delete('/deleteFavs/:id', (req, res) => {
+    console.log('in delete-fav route', req.params.id);
+    const idToDelete = req.params.id;
+    const query = `DELETE FROM "baked_favs" WHERE "id" = $1;`;
+    pool.query(query, [idToDelete])
+        .then((results) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('error in delete-fav', error);
+            res.sendStatus(500);
+        });
+}); //end of DELETE
 
 module.exports = router;
